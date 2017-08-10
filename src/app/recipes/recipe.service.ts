@@ -1,7 +1,7 @@
-import {Injectable, EventEmitter} from "@angular/core";
-import { Ingredient } from "../shared/ingredient.model";
-import { Recipe } from "./recipe.model";
-import { ShoppingListService } from "../shopping-list/shopping-list.service";
+import {Injectable, EventEmitter} from '@angular/core';
+import { Ingredient } from '../shared/ingredient.model';
+import { Recipe } from './recipe.model';
+import { ShoppingListService } from '../shopping-list/shopping-list.service';
 
 @Injectable()
 export class RecipeService {
@@ -23,8 +23,12 @@ export class RecipeService {
       return this.recipes.slice(); // returns a new array which is an exact copy
   }
 
-addIngredientsToShoppingList(ingredients: Ingredient[]) {
-    this.shoppingListService.addIngredients(ingredients);
-}
+  getRecipe(index: number) {
+    return this.recipes[index]
+  }
+
+  addIngredientsToShoppingList(ingredients: Ingredient[]) {
+      this.shoppingListService.addIngredients(ingredients);
+  }
 
 }
