@@ -19,4 +19,9 @@ export class ShoppingListService {
     this.ingredientsChanged.emit(this.ingredients.slice());
   }
 
+  addIngredients(ingredients: Ingredient[]) {
+    this.ingredients.push(...ingredients); // the spread operator. A great way of adding multiple things to an array.
+    this.ingredientsChanged.emit(this.ingredients);
+  }
+
 }
