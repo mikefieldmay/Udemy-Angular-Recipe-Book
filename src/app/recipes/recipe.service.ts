@@ -5,17 +5,15 @@ import { ShoppingListService } from '../shopping-list/shopping-list.service';
 
 @Injectable()
 export class RecipeService {
-    private recipes: Recipe[] = [
-    new Recipe('Fish and Chips',
-                'Super tasty supper',
-                'http://www.bizzielizzies.co.uk/wp-content/uploads/2015/03/slide-fish-chips-2015.jpg',
-                [
-                  new Ingredient('Fish', 1),
-                  new Ingredient('Chips', 20)
-                ])
+  private recipes: Recipe[] = [
+  new Recipe('Fish and Chips',
+              'Super tasty supper',
+              'http://www.bizzielizzies.co.uk/wp-content/uploads/2015/03/slide-fish-chips-2015.jpg',
+              [
+                new Ingredient('Fish', 1),
+                new Ingredient('Chips', 20)
+              ])
   ];
-  recipeSelected = new EventEmitter<Recipe>();
-
   constructor(private shoppingListService: ShoppingListService ) {
   }
 
