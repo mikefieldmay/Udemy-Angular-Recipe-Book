@@ -33,8 +33,6 @@ export class RecipeEditComponent implements OnInit {
   }
 
   private initForm() {
-    console.log(this.editMode);
-
     let recipeName = '';
     let recipeImagePath = '';
     let recipeDescription = '';
