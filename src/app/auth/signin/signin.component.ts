@@ -1,3 +1,4 @@
+import {Router} from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'app/auth/auth.service';
 import { NgForm } from '@angular/forms';
