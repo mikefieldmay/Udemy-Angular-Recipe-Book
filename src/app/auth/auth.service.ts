@@ -2,7 +2,7 @@ import {Response} from '@angular/http';
 import * as firebase from 'firebase';
 
 export class AuthService {
-  token = '';
+  token: string;
 
   signUpUser(email: string, password: string) {
     firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -32,6 +32,15 @@ export class AuthService {
           (token: string) => this.token = token
         );
     return this.token;
+  }
+
+  isAuthenticated() {
+    return this.token !== undefined;
+  }
+
+  logout() {
+    firebase.auth().signOut();
+    this.token = undefined;
   }
 
 }
