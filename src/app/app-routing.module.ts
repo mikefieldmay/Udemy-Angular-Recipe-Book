@@ -5,12 +5,12 @@ import { NgModule } from '@angular/core';
 import { SignupComponent } from 'app/auth/signup/signup.component';
 import { SigninComponent } from 'app/auth/signin/signin.component';
 import { AuthGuard } from 'app/auth/auth-guard.service';
+import { HomeComponent } from "app/home/home.component";
 
 const AppRoutes: Routes = [
-  { path: '', redirectTo: '/recipes', pathMatch: 'full' },
-  { path: 'signup', component: SignupComponent},
-  { path: 'shopping-list', component: ShoppingListComponent},
-  { path: 'signin', component: SigninComponent}
+  { path: '', component: HomeComponent },
+  { path: 'recipes', loadChildren: './recipes/recipes.module#RecipesModule' },
+  { path: 'shopping-list', component: ShoppingListComponent}
 ];
 
 @NgModule({
