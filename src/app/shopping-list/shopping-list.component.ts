@@ -1,3 +1,5 @@
+import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Ingredient } from "../shared/ingredient.model";
 import { ShoppingListService } from "./shopping-list.service";
@@ -8,29 +10,14 @@ import { Subscription } from "rxjs/Subscription";
   templateUrl: './shopping-list.component.html',
   styleUrls: ['./shopping-list.component.css']
 })
-export class ShoppingListComponent implements OnInit, OnDestroy {
-  ingredients: Ingredient[] = [];
-  private subscription: Subscription;
+export class ShoppingListComponent implements OnInit {
+  shoppingListState: Observable<{ingredients: Ingredient[]}>; // this.ingredients is a
 
-  constructor(private shoppingListService: ShoppingListService) { }
-
+  constructor(private shoppingListService: ShoppingListService, private store: Store<{shoppingList: {ingredients: Ingredient[]}}>) { }
+// we inject the store in the constructor. The store this component is interested in is the ingredient store
   ngOnInit() {
-    this.ingredients = this.shoppingListService.getIngredients();
-    this.subscription = this.shoppingListService.ingredientsChanged
-      .subscribe(
-        (ingredients: Ingredient[]) => {
-          this.ingredients = ingredients;
-        }
-      );
+    this.shoppingListState = this.store.select('shoppingList'); // store.select returns an observable
   }
-
-  ingredientAdded(ingredient: Ingredient) {
-    this.ingredients.push(ingredient);
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  };
 
   onEditItem(index: number) {
     this.shoppingListService.startedEditing.next(index);

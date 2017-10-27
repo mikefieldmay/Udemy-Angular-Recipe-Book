@@ -1,7 +1,9 @@
+import {StoreModule} from '@ngrx/store';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -16,6 +18,7 @@ import { SharedModule } from 'app/shared/shared.module';
 import { ShoppingListModule } from 'app/shopping-list/shopping-list.module';
 import { AuthModule } from "app/auth/auth.module";
 import { HomeComponent } from './home/home.component';
+import { shoppingListReducer } from 'app/shopping-list/store/shopping-list.reducers';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { HomeComponent } from './home/home.component';
     HttpModule,
     AppRoutingModule,
     SharedModule,
-    ShoppingListModule
+    ShoppingListModule,
+    StoreModule.forRoot({
+      shoppingList: shoppingListReducer
+    }) // this is for eagerly loaded modules
   ],
   providers: [ShoppingListService, RecipeService, DataStorageService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
