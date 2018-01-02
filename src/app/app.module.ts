@@ -2,7 +2,7 @@ import {StoreModule} from '@ngrx/store';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
@@ -29,7 +29,7 @@ import { shoppingListReducer } from 'app/shopping-list/store/shopping-list.reduc
   imports: [
     AuthModule,
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     AppRoutingModule,
     SharedModule,
     ShoppingListModule,
